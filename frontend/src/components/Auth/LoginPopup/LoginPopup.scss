@@ -1,0 +1,98 @@
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  animation: fadeIn 0.3s ease;
+
+  .modal-contain {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .login-input {
+    height: 50px;
+    outline: none;
+  }
+  .login-btn {
+    background: #5fcf86;
+
+    &:hover {
+      background: #71f19e;
+    }
+  }
+
+  .border-text {
+    height: 1px;
+    min-width: 20%;
+    background: #e3e6f0;
+  }
+
+  .socialite-btn {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    grid-gap: 18px;
+
+    a {
+      width: 50%;
+      padding: 14px 28px;
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+      font-weight: 500;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: cover;
+        margin-right: 8px;
+      }
+    }
+
+    a:hover {
+      transition: 0.2s all ease-in-out;
+      box-shadow: 0 0 0 2px #21e09ab0;
+    }
+  }
+
+  .card-body {
+    width: 440px;
+  }
+
+  .close-modal{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
