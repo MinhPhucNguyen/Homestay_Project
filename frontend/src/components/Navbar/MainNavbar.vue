@@ -75,9 +75,14 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {computed, ref} from "vue";
+import { useStore } from "vuex";
 import LoginPopup from "@/components/Auth/LoginPopup/LoginPopup.vue";
 import RegisterPopup from "@/components/Auth/RegisterPopup/RegisterPopup.vue";
+
+const store = useStore();
+const isAuthenticated = computed(() => store.getters["auth/isAuthenticated"]);
+const user = computed(() => store.getters["users/getUserById"]);
 
 const isLoginOpen = ref(false);
 const isRegisterOpen = ref(false);

@@ -15,4 +15,9 @@ import MainNavbar from "@/components/Navbar/MainNavbar.vue";
 .main {
    padding-top: 90px;
 }
+
+.content-container {
+   margin: 0 10%;
+   padding: 0 15px;
+}
 </style>

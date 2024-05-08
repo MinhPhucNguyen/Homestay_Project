@@ -24,6 +24,7 @@
               <div class="col-md-12">
                 <input
                   v-model="formData.email"
+                  @input="clearError('email')"
                   id="email"
                   type="text"
                   placeholder="Địa chỉ email"
@@ -38,6 +39,7 @@
               <div class="col-md-12">
                 <input
                   v-model="formData.password"
+                  @input="clearError('password')"
                   id="password"
                   type="password"
                   placeholder="Mật khẩu"
@@ -125,6 +127,7 @@ const emit = defineEmits(["close"]);
 
 const store = useStore();
 const isLoading = ref(false);
+const errors = ref(null);
 const router = useRouter();
 const formData = ref({
   email: "",
@@ -143,9 +146,29 @@ const loginSubmit = () => {
         : router.push({ name: "home" });
     })
     .catch((e) => {
-      console.log(e);
+      errors.value = e.response.data.errors;
+      if (!errors.value.email && !errors.value.password) {
+        errors.value = { global: e.response.data.errors };
+      }
+      isLoading.value = false;
     });
 };
+
+const clearError = (field) => {
+   if (errors.value) {
+      delete errors.value[field];
+      errors.value = null;
+   }
+};
+
+const loginWithGoogle = () => {
+   store.dispatch("auth/loginWithGoogle").then((response) => {
+      if (response.data.url) {
+         window.location.href = response.data.url;
+      }
+   });
+};
+
 </script>
 
 <style lang="scss" scoped>
